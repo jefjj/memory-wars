@@ -1,0 +1,7 @@
+DOCS
+node_modules
+unit_coverage
+
+dist/**/*.js
+
+**/*_test.js

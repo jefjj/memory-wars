@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="" />
+    <link rel="icon" href=" type=" image/x-icon" />
+    <link rel="icon" href="" type="image/x-icon" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <link rel="shortcut icon" href="" type="image/x-icon" />
+    <!-- build:cssVendor css/vendor.min.css -->
+    <link type="text/css" href="css/vendor.min.css" rel="stylesheet" />
+    <!-- endbuild -->
+    <!-- build:cssAll css/all.min.css -->
+    <link type="text/css" href="css/all.min.css" rel="stylesheet" />
+    <!-- endbuild -->
+    <title>Jogo da memória</title>
+</head>
+
+<body ng-app="app" ng-controller="GameController as gameCtrl" class="ng-cloak">
+    <div class="loading" ng-if="!gameCtrl"></div>
+    <section class="hidden" id="game-init" ng-show="gameCtrl.isStep(gameCtrl.STEP.identify)">
+        <div class="container-fluid">
+            <div class="mb-5">
+                <h1 class="color-text">Memory Wars</h1>
+                <h5>De que lado da força você está?</h5>
+            </div>
+            <div class="row">
+                <div class="col-sm-8">
+                    <h4 class="color-text">Identifique-se</h4>
+                    <div class="game-identity-box d-flex align-items-center justify-content-center">
+                        <form ng-submit="gameCtrl.nextStep()">
+                            <div class="form-group">
+                                <label>Digite seu nome</label>
+                                <input type="text" class="form-control" placeholder="" ng-model="gameCtrl.player.name">
+                                <div ng-show="!gameCtrl.player.isValid() && gameCtrl.loginError" class="bg-danger rounded mt-2 p-1 text-center small" ng-bind="gameCtrl.loginError"></div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-warning btn-block">JOGAR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <h4 class="color-text">Ranking</h4>
+                    <ul class="list-unstyled ranking-list">
+                        <li ng-repeat="player in gameCtrl.ranking" class="clearfix mb-1">
+                            <strong>#{{ $index + 1 }}</strong> {{ player.name }} <span class="float-right color-text">{{ player.rounds}} rodadas</span>
+                        </li>
+                        <li ng-if="!gameCtrl.ranking.length">Sem resultados</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hidden" id="game-play" ng-show="!gameCtrl.isStep(gameCtrl.STEP.identify)">
+        <div class="container-fluid">
+            <div class="mb-5">
+                <h1 class="color-text">Memory Wars</h1>
+                <h5>De que lado da força você está?</h5>
+            </div>
+            <span class="color-text">Encontre os pares iguais</span>
+            <div class="game-play-box mb-3 px-3 d-flex align-items-center justify-content-center">
+                <div class="row">
+                    <div class="col-3 col-sm-1" ng-repeat="card in gameCtrl.game.cards">
+                        <div class="game-card-container">
+                            <div class="flip-card" ng-class="{'show-card': card.isVisible() || card.isFound()}">
+                                <div class="flip-card-inner" ng-click="gameCtrl.selectCard(card)">
+                                    <div class="flip-card-front">
+                                        <a href class="game-card-imagem">
+                                            <img class="embed-responsive" ng-src="./images/cards/star-wars-logo.png">
+                                        </a>
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <small class="status-icon bg-success px-1" ng-show="card.isFound()"><i class="fas fa-check"></i></small>
+                                        <a href class="game-card-imagem" ng-class="{'card-found': card.isFound(), 'in-progress': !!gameCtrl.game.blocked}">
+                                            <img class="embed-responsive" ng-src="{{card.image}}">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 mb-3">
+                    N&ordm; de rodadas: <span class="color-text font-weight-bold h3">{{ gameCtrl.game.rounds }}</span>
+                </div>
+                <div class="offset-3 col-sm-3">
+                    <button type="button" class="btn btn-warning btn-block" ng-click="gameCtrl.restart()">Desistir</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hidden" id="game-finished" ng-show="gameCtrl.isStep(gameCtrl.STEP.finished)">
+        <div class="game-finished">
+            <div class="game-finished-container d-flex align-items-center justify-content-center">
+                <div class="game-finished-message p-5 bg-warning rounded text-center">
+                    <h2 class="text-center">Parabéns!</h2>
+                    <p class="text-center">Você concluiu a partida em {{ gameCtrl.game.rounds }} rodadas!</p>
+                    <button type="button" class="btn btn-block btn-dark mb-3" ng-click="gameCtrl.playAgain()">JOGAR NOVAMENTE</button>
+                    <a href class="link text-dark" ng-click="gameCtrl.restart()">TERMINAR</a>
+                </div>
+            </div>
+        </div>
+        <div class="game-finished-backdrop"></div>
+    </section>
+
+    <!-- build:jsVendor js/vendor.min.js -->
+    <script src="js/vendor.min.js"></script>
+    <!-- endbuild -->
+    <!-- build:jsAll js/all.min.js -->
+    <script src="js/all.min.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>

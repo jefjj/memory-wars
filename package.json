@@ -1,0 +1,58 @@
+{
+    "name": "db1_desafio",
+    "version": "1.0.0",
+    "description": "Desafion de criar um jogo da memória",
+    "main": "index.js",
+    "scripts": {
+        "start": "gulp",
+        "build": "gulp build",
+        "serve": "gulp serve",
+        "test": "gulp unit-test"
+    },
+    "keywords": [
+        "frontend",
+        "angularJs",
+        "html",
+        "css",
+        "javascript"
+    ],
+    "author": "Jeferson Costa",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "browser-sync": "^2.24.4",
+        "del": "^3.0.0",
+        "gulp": "^3.9.1",
+        "gulp-babel": "^7.0.1",
+        "gulp-changed": "^3.2.0",
+        "gulp-clean-css": "^3.9.4",
+        "gulp-concat": "^2.6.1",
+        "gulp-eslint": "^4.0.2",
+        "gulp-htmlmin": "^4.0.0",
+        "gulp-if": "^2.0.2",
+        "gulp-imagemin": "^4.1.0",
+        "gulp-livereload": "^3.8.1",
+        "gulp-rev": "^8.1.1",
+        "gulp-sass": "^4.0.1",
+        "gulp-uglify": "^3.0.0",
+        "gulp-usemin": "^0.3.29",
+        "gulp-util": "^3.0.8",
+        "karma": "^4.1.0",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-coverage": "^1.1.2",
+        "karma-jasmine": "^2.0.1",
+        "karma-ng-html2js-preprocessor": "^1.0.0",
+        "karma-phantomjs-launcher": "^1.0.4",
+        "minimist": "^1.2.0",
+        "run-sequence": "^2.2.1"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^5.8.2",
+        "angular": "^1.7.8",
+        "angular-mocks": "^1.7.8",
+        "bootstrap": "^4.3.1",
+        "jquery": "^3.4.1",
+        "lodash": "^4.17.11"
+    }
+}
