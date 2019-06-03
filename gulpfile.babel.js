@@ -20,7 +20,7 @@ import gulpif from 'gulp-if';
 import del from 'del';
 import eslint from "gulp-eslint";
 import {Server} from 'karma';
-// import imgMin from 'gulp-imagemin';
+import liveServer from 'gulp-live-server';
 
 import usemin from 'gulp-usemin';
 import rev from 'gulp-rev';
@@ -185,6 +185,11 @@ gulp.task('unit-test', (done) => {
     });
 });
 
+gulp.task('live-server', () => {
+    let server = liveServer.static('dist', 3000);
+    server.start();
+});
+
 gulp.task('devSequence', () => {
     return new Promise((resolve) => {
         runSequence(
@@ -217,7 +222,7 @@ gulp.task('serveSequence', () => {
             'cleanDist',
             ['build_js', 'build_jsVendor', 'build_css', 'build_cssVendor', 'build_code', 'build_fonts', 'copy_images'],
             'rev',
-            'browser-sync',
+            'live-server',
             resolve
         );
     });
