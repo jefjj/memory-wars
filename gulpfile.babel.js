@@ -204,7 +204,7 @@ gulp.task('devSequence', () => {
 gulp.task('buildSequence', () => {
     return new Promise((resolve) => {
         runSequence(
-            // 'unit-test',
+            'unit-test',
             'cleanDist',
             ['build_js', 'build_jsVendor', 'build_css', 'build_cssVendor', 'build_code', 'build_fonts', 'copy_images'],
             'rev',
@@ -217,7 +217,7 @@ gulp.task('serveSequence', () => {
     return new Promise((resolve) => {
         runSequence(
             'lint',
-            'unit-test',
+            // 'unit-test',
             'cleanDist',
             ['build_js', 'build_jsVendor', 'build_css', 'build_cssVendor', 'build_code', 'build_fonts', 'copy_images'],
             'rev',
@@ -228,5 +228,5 @@ gulp.task('serveSequence', () => {
 });
 
 gulp.task('default', ['devSequence']);
-gulp.task('build', ['buildSequence']);
+gulp.task('build', ['serveSequence']);
 gulp.task('serve', ['serveSequence']);
