@@ -216,7 +216,7 @@ gulp.task('buildSequence', () => {
 gulp.task('serveSequence', () => {
     return new Promise((resolve) => {
         runSequence(
-            'lint',
+            // 'lint',
             // 'unit-test',
             'cleanDist',
             ['build_js', 'build_jsVendor', 'build_css', 'build_cssVendor', 'build_code', 'build_fonts', 'copy_images'],
