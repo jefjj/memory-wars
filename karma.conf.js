@@ -64,7 +64,8 @@ module.exports = (config) => {
             'karma-ng-html2js-preprocessor'
         ],
         browsers: [
-            'Chrome'
+            // 'Chrome',
+            'PhantomJS'
         ],
         browserNoActivityTimeout: 60000,
         singleRun: false,
