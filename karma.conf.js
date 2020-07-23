@@ -58,14 +58,13 @@ module.exports = (config) => {
         },
         plugins: [
             'karma-phantomjs-launcher',
-            // 'karma-chrome-launcher',
+            'karma-chrome-launcher',
             'karma-jasmine',
             'karma-coverage',
             'karma-ng-html2js-preprocessor'
         ],
         browsers: [
-            // 'Chrome',
-            'PhantomJS'
+            'ChromeHeadless'
         ],
         browserNoActivityTimeout: 60000,
         singleRun: false,
