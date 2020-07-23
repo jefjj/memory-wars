@@ -137,9 +137,7 @@ body {
 
 .flip-card.show-card .flip-card-inner {
   -webkit-transform: rotateY(180deg);
-  transform: rotateY(180deg);
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden; }
+  transform: rotateY(180deg); }
 
 .flip-card-front,
 .flip-card-back {
