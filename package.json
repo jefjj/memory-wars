@@ -47,7 +47,7 @@
         "karma-jasmine": "^2.0.1",
         "karma-ng-html2js-preprocessor": "^1.0.0",
         "karma-phantomjs-launcher": "^1.0.4",
-        "minimist": "^1.2.5",
+        "minimist": "^1.2.6",
         "run-sequence": "^2.2.1"
     },
     "dependencies": {
